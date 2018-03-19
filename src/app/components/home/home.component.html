@@ -1,0 +1,42 @@
+
+
+<h1>Movies in Cinemas NOW!!</h1>
+<hr>
+<div class="card-columns" >
+  <div class="card animated fadeIn fast" *ngFor="let currentMovie of currentMovies;">
+    <img class="card-img-top" *ngIf="currentMovie.backdrop_path != null" src="https://image.tmdb.org/t/p/w300/{{currentMovie.backdrop_path}}">
+    <img class="card-img-top" *ngIf="currentMovie.backdrop_path == null" src="../../../assets/imgs/noimage.png">
+    <div class="card-body">
+      <h5 class="card-text">{{ currentMovie.title }}</h5>
+      <button [routerLink]="['/movie',currentMovie.id]" class="btn btn-outline-success">
+        Edit
+      </button>
+    </div>
+  </div>
+</div>
+<br/>
+<br/>
+<br/>
+<h1>Most Popular Movies</h1>
+<hr>
+<div class="card-columns">
+  <div class="card animated fadeIn fast" *ngFor="let movie of movies;">
+    <img class="card-img-top" *ngIf="movie.backdrop_path != null" src="https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path}}">
+    <img class="card-img-top" *ngIf="movie.backdrop_path == null" src="../../../assets/imgs/noimage.png">
+    <div class="card-body">
+      <h5 class="card-text">{{ movie.title }}</h5>
+    </div>
+  </div>
+</div>
+<br/><br/><br/>
+<h1>Most Popular Movies For Kids</h1>
+<hr>
+<div class="card-columns">
+  <div class="card animated fadeIn fast" *ngFor="let kidMovie of kidMovies;">
+    <img class="card-img-top" *ngIf="kidMovie.backdrop_path != null" src="https://image.tmdb.org/t/p/w300/{{ kidMovie.backdrop_path}}">
+    <img class="card-img-top" *ngIf="kidMovie.backdrop_path == null" src="../../../assets/imgs/noimage.png">
+    <div class="card-body">
+      <h5 class="card-text">{{ kidMovie.title }}</h5>
+    </div>
+  </div>
+</div>
