@@ -1,3 +1,24 @@
-<p>
-  search works!
-</p>
+
+<label for="term">Search Movie</label>
+<input type="text" class="form-control" placeholder="Search Movie..." [(ngModel)]="term" name="term" (keyup)="searchMovie(term)">
+
+<div class="col-md-12" *ngIf="term.length > 1">
+  <h1 class="text-capitalize">{{ term }} </h1>
+  <hr>
+
+  <div class="row animated fadeIn fast">
+    <div class="card-columns">
+      <div class="card animated fadeIn fast" *ngFor="let movie of _moviesservice.movies" [routerLink]="['/movie', movie.id]">
+        <img class="card-img-top" [src]="movie | movieimage" [alt]="movie.original_title">
+        <div class="card-body">
+          <h5 class="card-text">{{ movie.title }}</h5>
+          <p class="text-justify">{{ movie.overview | truncate : 150 : true}}</p>
+          <button [routerLink]="['/movie', movie.id, 'search', term]" class="btn btn-outline-info btn-block">
+            Edit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

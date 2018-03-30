@@ -1,4 +1,20 @@
-<p>
-  {{ movie.title }}
-   {{ movie.id }}
-</p>
+<div class="row animated fadeIn fast" *ngIf="movie">
+  <div class="col-md-12">
+    <h1>{{movie.title}}</h1>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <img class="img-thumbnail img-fluid text-center" [src]="movie | movieimage:true" [alt]="movie.title">
+  </div>
+  <div class="col-md-8 col-sm-12">
+    <h3>Sinopsis</h3>
+    <hr>
+    <p>{{movie.overview}}</p>
+    <div *ngIf="movie.tagline">
+      <h6>Famous tag</h6>
+      <p>{{movie.tagline}}</p>
+    </div>
+    Popularity: <span class="badge badge-primary">{{movie.popularity | number:'.0-0'}}/10</span><br/>
+    Average vote: <span class="badge badge-primary">{{movie.vote_average}}</span><br/><br/>
+    <button type="button" class="btn btn-primary" [routerLink]="['/'+backTo, searchTerm]">Go back</button>
+  </div>
+</div>

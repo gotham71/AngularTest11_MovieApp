@@ -14,12 +14,22 @@ import { MoviesService } from './../../services/moviesservice.service';
 export class MovieComponent implements OnInit {
 
   movie: any = {};
+  backTo: string = "";
+  searchTerm: string = "";
 
   constructor(private _moviesService: MoviesService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
+
     this.activatedRoute.params.subscribe( parameters => {
-        this._moviesService.getMovie( parameters['id'] ).subscribe(movie => this.movie);
+        this.backTo = parameters['page'];
+
+        if (parameters['searchTerm']){
+          this.searchTerm = parameters['searchTerm'];
+        }
+
+        console.log('backto = ' + this.backTo);
+        this._moviesService.getMovie( parameters['id'] ).subscribe(movie => { this.movie = movie; console.log(movie); });
     });
   }
 

@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 
 //Pipes
 import { DatePipe } from '@angular/common';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { MovieimagePipe } from './pipes/movieimage.pipe';
 
 //Services
 import { MoviesService } from '../app/services/moviesservice.service';
@@ -15,10 +17,10 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { MovieComponent } from './components/movie/movie.component'
+import { GalleryComponent } from './components/home/gallery.component';
 
 //Routes
 import { APP_ROUTING } from './app.routes';
-import { NoimagePipe } from './pipes/noimage.pipe';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     HomeComponent,
     SearchComponent,
     MovieComponent,
-    NoimagePipe
+    TruncatePipe,
+    MovieimagePipe,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,

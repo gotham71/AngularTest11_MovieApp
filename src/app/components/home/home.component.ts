@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+//Services
 import { MoviesService } from './../../services/moviesservice.service';
 
 
@@ -9,17 +11,17 @@ import { MoviesService } from './../../services/moviesservice.service';
 })
 export class HomeComponent implements OnInit {
 
-  currentMovies: any[] = [];
-  movies: any[] = [];
-  kidMovies: any[] = [];
+  currentMovies: any;
+  movies: any;
+  kidMovies: any;
 
   constructor( private _moviesService: MoviesService) {
   }
 
   ngOnInit() {
-    this._moviesService.getCurrentMovies().subscribe(response => { this.currentMovies = response.results; console.log(this.currentMovies); });
-    this._moviesService.getPopularMovies().subscribe(response => { this.movies = response.results; console.log(this.movies);});
-    this._moviesService.getKidPopularMovies().subscribe(response => { this.kidMovies = response.results; console.log(this.kidMovies); });
+    this._moviesService.getCurrentMovies().subscribe(response => { this.currentMovies = response; console.log(this.currentMovies); });
+    this._moviesService.getPopularMovies().subscribe(response => { this.movies = response; console.log(this.movies);});
+    this._moviesService.getKidPopularMovies().subscribe(response => { this.kidMovies = response; console.log(this.kidMovies); });
   }
 
 }
